@@ -23,8 +23,7 @@ export const getVideos = (id) => async (dispatch) => {
 
   try {
     const res = await axios.get(
-      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/videos${id ? `?channelId=${id}` : ""}`,  // Ruta para obtener los videos en el backend
-      { withCredentials: true }
+      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/videos${id ? `?channelId=${id}` : ""}`
     );
     console.log(res.data.body);
     if (res.status === 200) {
@@ -108,7 +107,8 @@ export const addVideo = (title, description, file) => async (dispatch) => {
         formData,  // Enviamos el FormData con el archivo
         {
           headers: {
-            "Content-Type": "multipart/form-data",  // Indicamos que estamos enviando un archivo
+            "Content-Type": "multipart/form-data",
+            "Authorization": `Bearer ${localStorage.getItem("token")}` 
           }
         }
       );
@@ -170,8 +170,7 @@ export const deleteVideo = (videoId) => async (dispatch) => {
 
   try {
     const res = await axios.delete(
-      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/${videoId}`,
-      { withCredentials: true }
+      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/${videoId}`
     );
 
     if (res.status === 200) {
@@ -236,8 +235,7 @@ export const deleteCommentFromVideo = (videoId, commentId) => async (dispatch) =
 
   try {
     const res = await axios.delete(
-      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/comments/${videoId}/${commentId}`,
-      { withCredentials: true }
+      `${import.meta.env.VITE_REACT_APP_API_URL}/videos/comments/${videoId}/${commentId}`
     );
 
     if (res.status === 200) {

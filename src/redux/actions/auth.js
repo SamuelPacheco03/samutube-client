@@ -20,7 +20,7 @@ export const login =
       headers: {
         "Content-Type": "application/json",
       },
-      withCredentials: true,
+      
     };
 
     const body = JSON.stringify({
