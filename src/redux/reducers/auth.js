@@ -76,7 +76,6 @@ export const authSlice = createSlice({
       state.session = false;
       state.user = null;
       state.loading = false;
-      
     },
   },
 });
