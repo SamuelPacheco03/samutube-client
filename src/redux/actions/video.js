@@ -118,7 +118,7 @@ export const addVideo = (title, description, file) => async (dispatch) => {
       if (res.status === 201) {
         dispatch(ADD_VIDEO_SUCCESS(res.data.body.newVideo)); // Responde con el video recién creado
       } else {
-        dispatch(ADD_VIDEO_FAIL("Error al crear el video"));
+        dispatch(ADD_VIDEO_FAIL("Error al crear el v2ideo"));
       }
     } catch (err) {
       console.log(err);
