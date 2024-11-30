@@ -51,7 +51,7 @@ function VideoGrid({ videos_list, getVideos, getVideosBySubscriptions }) {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 bg-gray-900">
           {videos.map((video) => (
-            <Link to={`watch/${video._id}`}>
+            <Link to={`/watch/${video._id}`}>
               <div
                 key={video.id}
                 className="bg-gray-800 text-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:cursor-pointer"

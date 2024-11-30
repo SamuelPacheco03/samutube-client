@@ -291,15 +291,17 @@ function VideoPage({ getVideos, getVideoById, video_in, videos_list, session, li
           ) : Array.isArray(videos) && videos.length > 0 ? (
             videos.map((relatedVideo) => (
               <div key={relatedVideo.id} className="flex space-x-2">
-                <img
-                  src={relatedVideo.urlMiniature}
-                  alt={relatedVideo.title}
-                  className="w-40 h-24 object-cover rounded"
-                />
-                <div>
-                  <h3 className="font-semibold">{relatedVideo.title}</h3>
-                  <p className="text-sm text-gray-500">{relatedVideo.channel}</p>
-                </div>
+                <Link to={`/watch/${relatedVideo._id}`}>
+                  <img
+                    src={relatedVideo.urlMiniature}
+                    alt={relatedVideo.title}
+                    className="w-40 h-24 object-cover rounded"
+                  />
+                  <div>
+                    <h3 className="font-semibold">{relatedVideo.title}</h3>
+                    <p className="text-sm text-gray-500">{relatedVideo.channel}</p>
+                  </div>
+                </Link>
               </div>
             ))
           ) : (
