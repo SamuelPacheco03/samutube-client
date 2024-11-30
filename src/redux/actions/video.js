@@ -100,8 +100,9 @@ export const addVideo = (title, description, file) => async (dispatch) => {
     formData.append("title", title);
     formData.append("description", description);
     formData.append("file", file);  // El archivo de video que se selecciona desde el frontend
-  
+    console.log(formData);
     try {
+      console.log(import.meta.env.VITE_REACT_APP_API_URL);
       const res = await api.post(
         `${import.meta.env.VITE_REACT_APP_API_URL}/videos/create-video`,  // Ruta para crear el video en el backend
         formData,  // Enviamos el FormData con el archivo
@@ -111,7 +112,8 @@ export const addVideo = (title, description, file) => async (dispatch) => {
           }
         }
       );
-      console.log(import.meta.env.VITE_REACT_APP_API_URL);
+
+      console.log(res);
   
       if (res.status === 201) {
         dispatch(ADD_VIDEO_SUCCESS(res.data.body.newVideo)); // Responde con el video recién creado
@@ -119,6 +121,7 @@ export const addVideo = (title, description, file) => async (dispatch) => {
         dispatch(ADD_VIDEO_FAIL("Error al crear el video"));
       }
     } catch (err) {
+      console.log(err);
       let errorMessage = "Error desconocido al crear el video.";
       if (err.response) {
         errorMessage = err.response.data.body || "Error en el servidor.";
