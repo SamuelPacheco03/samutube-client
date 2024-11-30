@@ -108,8 +108,7 @@ export const addVideo = (title, description, file) => async (dispatch) => {
         {
           headers: {
             "Content-Type": "multipart/form-data",  // Indicamos que estamos enviando un archivo
-          },
-          withCredentials: true,  // Si es necesario mantener la sesión
+          }
         }
       );
       console.log(import.meta.env.VITE_REACT_APP_API_URL);
