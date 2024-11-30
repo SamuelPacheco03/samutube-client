@@ -16,6 +16,7 @@ import {
 } from "../reducers/video";
 import api from "../../services/authService";
 
+
 // Acción para obtener todos los videos
 export const getVideos = (id) => async (dispatch) => {
   dispatch(SET_VIDEO_LOADING());
@@ -108,7 +109,6 @@ export const addVideo = (title, description, file) => async (dispatch) => {
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Authorization": `Bearer ${localStorage.getItem("token")}` 
           }
         }
       );

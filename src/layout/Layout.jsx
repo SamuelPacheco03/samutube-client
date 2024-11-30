@@ -31,9 +31,7 @@
 
                 <Navbar setSidebarOpen={setSidebarOpen} sidebarOpen={sidebarOpen} />
                 <div className="flex">
-                    
                     <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-                    
                     <main className="flex-1 p-4">
                         {children}
                     </main>

@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_REACT_APP_API_URL,
-  // No es necesario incluir `withCredentials: true` ya que no estamos enviando cookies.
+  baseURL: import.meta.env.VITE_REACT_APP_API_URL
 });
 
 // Interceptor para agregar el token de localStorage a todas las solicitudes
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token'); // Obtén el token desde localStorage
+    console.log(token) 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`; // Agregar el token al header
     }
