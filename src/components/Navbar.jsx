@@ -2,7 +2,7 @@ import { Search, Upload, User, Menu, LogOut, X } from 'lucide-react';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { addVideo, searchVideoByTitle } from '../redux/actions/video';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../redux/actions/auth';
 
 function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, searchVideoByTitle }) {
@@ -14,7 +14,8 @@ function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, search
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
-
+  const navigate = useNavigate();
+  
   const handleUpload = async () => {
     if (videoFile && title && description) {
       setLoading(true);
@@ -28,6 +29,7 @@ function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, search
         console.error('Error al subir el video:', error);
       } finally {
         setLoading(false);
+        windows.location.reload();
       }
     }
   };
@@ -43,6 +45,9 @@ function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, search
 
   const toggleLogin = () => {
     logout();
+    navigate('/');
+    window.location.reload();
+
   };
 
   useEffect(() => {
@@ -74,7 +79,7 @@ function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, search
         <div className="relative">
           <input
             type="search"
-            placeholder="Buscar en el cosmos..."
+            placeholder="Buscar vídeos..."
             className="w-full bg-gray-800 text-white placeholder-gray-400 border-none py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
