@@ -29,7 +29,7 @@ function Navbar({ setSidebarOpen, sidebarOpen, addVideo, session, logout, search
         console.error('Error al subir el video:', error);
       } finally {
         setLoading(false);
-        window.location.reload();
+        // window.location.reload();
       }
     }
   };
