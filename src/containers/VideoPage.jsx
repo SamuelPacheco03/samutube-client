@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ThumbsUp, ThumbsDown, User } from "lucide-react";
 import Layout from "../layout/Layout";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getVideos, getVideoById, likeVideo, suscribe, addCommentToVideo } from "../redux/actions/video";
 import { formatDistanceToNow } from "date-fns"; // Asegúrate de instalar date-fns para manejar fechas fácilmente
